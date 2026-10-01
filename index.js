@@ -10,8 +10,10 @@ const app = express();
 
 connectDB();
 
+const allowedOrigin = (process.env.CLIENT_URL || "http://localhost:5173").replace(/\/$/, "");
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: allowedOrigin,
   credentials: true,
 }));
 app.use(express.json());
